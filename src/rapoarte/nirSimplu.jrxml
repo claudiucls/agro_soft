@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" whenResourceMissingType="Empty" uuid="1d249163-1339-481d-96f7-c22cd8e58f18">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\Claudiu\\Documents\\NetBeansProjects\\Ags_soft4\\src\\rapoarte\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="dataDeLa" class="java.lang.String">
+		<defaultValueExpression><![CDATA["2016-08-01"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="dataPanaLa" class="java.lang.String">
+		<defaultValueExpression><![CDATA["2016-08-07"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select * from nir where data>=$P{dataDeLa} and data<=$P{dataPanaLa}]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nr_nir" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="data" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tip_doc" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="factura" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="furnizor" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="gestiune" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="ValoareNir" class="java.lang.Double" incrementType="Report" calculation="Sum">
+		<variableExpression><![CDATA[]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="50">
+			<staticText>
+				<reportElement x="26" y="28" width="121" height="20" uuid="faf9223f-4604-4097-8595-9740e246197d"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[CUI : RO15254678]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="26" y="8" width="138" height="20" uuid="e982ccd1-4972-4623-b249-fa3402af00ce"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[SC AGRO STROE SRL]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="227" splitType="Stretch">
+			<subreport>
+				<reportElement x="15" y="102" width="540" height="112" uuid="686a7597-bff7-43a0-8092-8e306a8f3acf"/>
+				<subreportParameter name="nr_nir">
+					<subreportParameterExpression><![CDATA[$F{id}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR}+"nirSimplu_subreport1.jasper"]]></subreportExpression>
+			</subreport>
+			<staticText>
+				<reportElement x="322" y="71" width="80" height="20" uuid="853a1c4b-8177-4d9b-af3d-f185441c88eb"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Gestiunea:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="83" y="23" width="146" height="20" uuid="7df45287-1f9e-4fae-b8be-052444b1c7a1"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nota de Receptie nr.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="275" y="24" width="57" height="20" uuid="068cd830-5025-4b09-8240-2d23bff9d423"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[din data de]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="31" y="71" width="67" height="20" uuid="339b336f-0e37-428b-b312-b5522ad2ba09"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Furnizor :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="150" y="44" width="93" height="20" uuid="61955e7c-2e93-4998-921a-6a4a4da3ec91"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Doc. intrare:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="229" y="24" width="30" height="20" uuid="65c4dc3f-142e-477c-affe-986b9fbc8052"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nr_nir}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="342" y="24" width="120" height="20" uuid="85c91d05-5840-4d23-8107-b34fec3e3622"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("dd-MM-yyyy").format($F{data})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="243" y="44" width="32" height="20" uuid="7100ac15-d344-44ef-8646-9bd23ef9ea49"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tip_doc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="275" y="44" width="86" height="20" uuid="bceba816-e551-4f5f-b06f-528983286fe9"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{factura}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="101" y="71" width="146" height="20" uuid="03133a54-3179-4432-aa02-fc45e6866097"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{furnizor}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="0" width="555" height="1" uuid="a780aef9-58b9-4855-aad9-a2b2bb8d1e5e"/>
+			</line>
+			<subreport>
+				<reportElement x="402" y="71" width="153" height="20" uuid="8d48b510-f29a-4dae-8cdf-789f166d6cbe"/>
+				<subreportParameter name="idGestiune">
+					<subreportParameterExpression><![CDATA[$F{gestiune}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "subreport_gestiune.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="25">
+			<textField>
+				<reportElement x="435" y="0" width="80" height="20" uuid="10e3e62e-9651-4768-806e-5d2674fba8c3"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Pagina "+$V{PAGE_NUMBER}+" din"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="515" y="0" width="40" height="20" uuid="a34bbbd0-5384-4041-b66a-6e8c60efbeaa"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

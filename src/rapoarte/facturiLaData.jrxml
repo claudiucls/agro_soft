@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.0.final using JasperReports Library version 6.3.0  -->
+<!-- 2016-09-01T14:08:13 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b8e2b79c-c470-4b54-80f9-800312267fa0">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Ags-gest"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\Claudiu\\Documents\\NetBeansProjects\\Ags_soft4\\src\\rapoarte\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="dataDeLa" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["2016-08-01"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="dataPanaLa" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["2016-08-31"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select * from factura where data>=$P{dataDeLa} and data<=$P{dataPanaLa}]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nr_iesire" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="data" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="client" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="gest" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="zile_scad" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="deleg_nume" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="deleg_ci" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="deleg_trans" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="chitanta" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="204" splitType="Stretch">
+			<staticText>
+				<reportElement x="50" y="4" width="115" height="15" uuid="d4c752ff-d12b-4ab8-9e57-bd36289fd58c"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[SC AGRO STROE SRL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="50" y="19" width="100" height="15" uuid="9bcbd281-b5dc-4efe-bc22-cba60c59b972"/>
+				<text><![CDATA[RO15254678]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="50" y="34" width="169" height="15" uuid="3b13ca6d-c300-40dc-abe6-ed1d11568453"/>
+				<text><![CDATA[J21/86/2003]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="50" y="49" width="169" height="15" uuid="707742fe-7a5f-4470-be16-cf39cb7999e0"/>
+				<text><![CDATA[Loc. Movila, Jud. Ialomita]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="50" y="65" width="169" height="15" uuid="81aac549-e6a2-4749-8f7e-2bebfc825378"/>
+				<text><![CDATA[Raiffeisen Bank - Fetesti]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="50" y="80" width="169" height="15" uuid="89210e26-b172-4fca-b1e8-66aff52bfc5a"/>
+				<text><![CDATA[RO96 RZBR 0000 0600 0311 8282]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="150" width="555" height="20" uuid="c97a09c9-0093-4ecd-b031-bf2920471bbc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Numar : "+$F{nr_iesire}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="169" width="555" height="20" uuid="b805f85b-a5ab-49ca-9b50-c062534dfde4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Data (zi-luna-an) : "+new SimpleDateFormat("dd-MM-yyyy").format($F{data})]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="130" width="555" height="20" uuid="ef81bd6b-9f5e-42bf-8d85-3d15c1704e44"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Factura Fiscala]]></text>
+			</staticText>
+			<subreport>
+				<reportElement x="284" y="1" width="271" height="100" uuid="96c6d075-62ca-4fdd-b666-561a871d9fca"/>
+				<subreportParameter name="client">
+					<subreportParameterExpression><![CDATA[$F{client}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "facturaSimpla_subreport1.jasper"]]></subreportExpression>
+			</subreport>
+			<staticText>
+				<reportElement x="0" y="4" width="50" height="15" uuid="b793dad0-47be-401a-9c76-830c077b4e0b"/>
+				<text><![CDATA[Furnizor :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="19" width="50" height="15" uuid="9c76b6df-c4f5-4f44-a811-c6b62bea7e8a"/>
+				<text><![CDATA[C.I.F.:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="34" width="50" height="15" uuid="aba32b3d-ee5f-4fb4-82c5-b80af8e19c06"/>
+				<text><![CDATA[Nr.O.R.C.:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="49" width="50" height="15" uuid="3e6db520-498a-498e-8072-3776848cb9ca"/>
+				<text><![CDATA[Sediul :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="65" width="50" height="15" uuid="8e3ae394-5362-48fb-8c72-7a099d10b80a"/>
+				<text><![CDATA[Banca :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="80" width="50" height="15" uuid="1eafae75-768c-440f-bf0f-3574c627b868"/>
+				<text><![CDATA[Contul :]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="215" splitType="Stretch">
+			<subreport>
+				<reportElement positionType="Float" x="11" y="10" width="533" height="196" uuid="ddd195d2-c667-4f5c-bc63-c2a133be0c56"/>
+				<subreportParameter name="delegNume">
+					<subreportParameterExpression><![CDATA[$F{deleg_nume}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="factura">
+					<subreportParameterExpression><![CDATA[$F{id}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="dataf">
+					<subreportParameterExpression><![CDATA[$F{data}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="delegTrans">
+					<subreportParameterExpression><![CDATA[$F{deleg_trans}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="delegCI">
+					<subreportParameterExpression><![CDATA[$F{deleg_ci}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="scadenta">
+					<subreportParameterExpression><![CDATA[$F{zile_scad}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "facturaSimpla_subreport2.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="51" splitType="Stretch"/>
+	</summary>
+</jasperReport>

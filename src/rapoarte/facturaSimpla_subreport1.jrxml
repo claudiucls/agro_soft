@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="facturaSimpla_subreport1" language="groovy" pageWidth="277" pageHeight="802" columnWidth="277" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="acff9a6c-8e93-4db3-8af6-4fd6575c4793">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="client" class="java.lang.String">
+		<defaultValueExpression><![CDATA["KLEVEK FACTORY S.R.L."]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select * from client where nume = $P{client}]]>
+	</queryString>
+	<field name="nume" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cui" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nr_registru" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="adresa" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="banca" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cont" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="106" y="3" width="171" height="15" uuid="a3197286-57fe-48b6-9a3b-e6c628893701"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[
+$F{nume}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="106" y="18" width="171" height="15" uuid="03b22863-4d76-42f6-a627-8d4ab5038f4f"/>
+				<textFieldExpression><![CDATA[$F{cui}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="106" y="32" width="171" height="15" uuid="d018cdfa-5846-4b42-b23c-1d2d7d1f3e1b"/>
+				<textFieldExpression><![CDATA[$F{nr_registru}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="106" y="46" width="171" height="41" uuid="81c732bb-d00c-44f3-bdef-bceef2abd6fb"/>
+				<textFieldExpression><![CDATA[$F{adresa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="106" y="87" width="171" height="15" uuid="f94478da-54fe-4a42-8f84-d45ec53fb7cd"/>
+				<textFieldExpression><![CDATA[$F{banca}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="106" y="101" width="171" height="15" uuid="eb7e9846-0abf-4bc4-ac13-a32919078aae"/>
+				<textFieldExpression><![CDATA[$F{cont}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="48" y="3" width="56" height="15" uuid="96974c2c-5202-428e-9c38-aae280050028"/>
+				<text><![CDATA[Beneficiar :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="48" y="18" width="56" height="15" uuid="ba709b1a-3079-4e22-b9eb-20a17ac39a14"/>
+				<text><![CDATA[C.I.F. :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="48" y="32" width="56" height="15" uuid="e421b120-c3a5-488b-916d-2d7913339dec"/>
+				<text><![CDATA[Nr.O.R.C. :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="48" y="46" width="56" height="15" uuid="723665e0-c17a-4a85-a82c-f08dff1b75e1"/>
+				<text><![CDATA[Sediul :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="48" y="86" width="56" height="15" uuid="4a639bc7-eaa3-4480-a917-9e791a664c5b"/>
+				<text><![CDATA[Banca :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="48" y="101" width="56" height="15" uuid="65616e61-5105-4078-a02b-9f5904cd49f9"/>
+				<text><![CDATA[Cont :]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

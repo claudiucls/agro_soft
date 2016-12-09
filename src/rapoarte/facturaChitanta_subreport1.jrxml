@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="facturaChitanta_subreport1" language="groovy" pageWidth="525" pageHeight="802" columnWidth="525" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="ff00d2ac-001f-475c-ac92-39a1bacf9fb3">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="factura" class="java.lang.Integer" isForPrompting="false">
+		<defaultValueExpression><![CDATA[5]]></defaultValueExpression>
+	</parameter>
+	<parameter name="delegNume" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="delegCI" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="data" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="totalF" class="java.lang.Double" isForPrompting="false"/>
+	<queryString>
+		<![CDATA[select * from produs where factura =$P{factura}]]>
+	</queryString>
+	<field name="id_produs" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="denumire" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="um" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tva" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pret_unitar" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cantitate_intrare" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cantitate_iesire" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cantitate_facturat" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="intrare" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="iesire" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="factura" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="83" splitType="Stretch">
+			<textField>
+				<reportElement stretchType="RelativeToBandHeight" x="14" y="0" width="501" height="54" uuid="c0dc979a-a456-4d9a-8b66-2414b8c7a9dc"/>
+				<textFieldExpression><![CDATA["Am primit de la "+$P{delegNume}+" identificat cu CI "+$P{delegCI}+" suma de "+new DecimalFormat("#0.00##").format($P{totalF})+" lei, reprezentand contravaloare FF nr. "+$F{factura}+" din data de "+$P{data}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="348" y="54" width="100" height="20" uuid="d9e70edb-92ab-41bb-8174-6d8f63014e15"/>
+				<text><![CDATA[Semnatura,]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

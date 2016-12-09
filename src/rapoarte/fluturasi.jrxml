@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d53998ff-773b-4b81-8c44-1266dcabda51">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="luna" class="java.lang.String" isForPrompting="false"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="COLUMN_0" class="java.lang.Integer"/>
+	<field name="COLUMN_1" class="java.lang.String"/>
+	<field name="COLUMN_2" class="java.lang.String"/>
+	<field name="COLUMN_3" class="java.lang.String"/>
+	<field name="COLUMN_4" class="java.lang.Double"/>
+	<field name="COLUMN_5" class="java.lang.Integer"/>
+	<field name="COLUMN_6" class="java.lang.Double"/>
+	<field name="COLUMN_7" class="java.lang.Double"/>
+	<field name="COLUMN_8" class="java.lang.Double"/>
+	<field name="COLUMN_9" class="java.lang.Short"/>
+	<field name="COLUMN_10" class="java.lang.Double"/>
+	<field name="COLUMN_11" class="java.lang.Double"/>
+	<field name="COLUMN_12" class="java.lang.Double"/>
+	<field name="COLUMN_13" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="10" splitType="Stretch"/>
+	</pageHeader>
+	<detail>
+		<band height="154" splitType="Stretch">
+			<staticText>
+				<reportElement x="152" y="44" width="70" height="20" uuid="24cb2a69-c2b2-4011-8c51-9126684a76c9"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Salariu Brut=]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="64" width="219" height="20" uuid="28c788d7-0541-4a67-912f-10eb4948bdbc"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Asigurari Sociale (CAS) 10.5%  =]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="84" width="219" height="20" uuid="561ba587-2cad-4d1f-be0d-c730ebf8330e"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Asigurari Sociale de Sanatate (CASS) 5.5%=]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="104" width="219" height="20" uuid="ea7a916f-5a24-475e-905c-de2107022530"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Fondul de Somaj (CFS) 0.5%=]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="322" y="64" width="134" height="20" uuid="60b4cd4c-68cb-4b1d-abb8-4cdac8ec261e"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Deducere personala (DP) =]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="322" y="84" width="134" height="20" uuid="cc2aa487-da00-4c00-b1c6-413638951da8"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Impozit pe Venit (IV) 16% =]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="322" y="104" width="134" height="20" uuid="d2436974-7976-41f0-9a9d-737d3cc8590d"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Total Taxe =]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="152" y="124" width="70" height="20" uuid="3de00124-aa2b-46f9-abc8-a5057dae6f07"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Salariu Net=]]></text>
+			</staticText>
+			<line>
+				<reportElement x="6" y="149" width="544" height="1" uuid="5a00879f-33ce-45f4-b94c-303268419acf"/>
+			</line>
+			<staticText>
+				<reportElement x="356" y="124" width="100" height="20" uuid="f1c76108-5625-4a16-a694-16ecaffc0a5d"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<text><![CDATA[Val. Tickete masa =]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="24" width="95" height="20" uuid="e7f359c3-9e0d-4cbb-9a62-875105728a5c"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[CUI: RO15254678]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="4" width="95" height="20" uuid="4da02b7f-ef9e-4f4c-9fb5-b8cfa8e13299"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[SC Agro Stroe SRL]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="222" y="44" width="100" height="20" uuid="d7e266c6-10c8-4ad2-a656-7a7a518ba77e"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{COLUMN_4}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="222" y="64" width="100" height="20" uuid="15b59ddc-eb56-4483-8390-8c90087a3042"/>
+				<textElement verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{COLUMN_6}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="222" y="84" width="100" height="20" uuid="b0a035e7-a934-401d-be20-6373cb8dc3c5"/>
+				<textFieldExpression><![CDATA[$F{COLUMN_7}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="222" y="104" width="100" height="20" uuid="49192d64-08a9-43f6-8c3c-fe639252fc41"/>
+				<textFieldExpression><![CDATA[$F{COLUMN_8}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="456" y="64" width="99" height="20" uuid="9d47e777-3299-4d2e-b26d-3dec81326b61"/>
+				<textFieldExpression><![CDATA[$F{COLUMN_10}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="456" y="84" width="100" height="20" uuid="77417733-8b42-4c63-8268-3282922024e6"/>
+				<textFieldExpression><![CDATA[$F{COLUMN_11}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="456" y="124" width="100" height="20" uuid="bd62f425-13c7-4905-a2ed-d279c90a3916"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{COLUMN_12}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="222" y="124" width="100" height="20" uuid="5ee9ab53-d41a-466d-b2a4-315ec63a35c0"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{COLUMN_13}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="115" y="4" width="123" height="20" uuid="8eb3e6c3-e277-4498-934a-f48a14607bc9"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{COLUMN_1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="238" y="4" width="100" height="20" uuid="2bd27dba-7a75-4263-a993-eccc6bf092fe"/>
+				<textFieldExpression><![CDATA[$F{COLUMN_2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="338" y="4" width="100" height="20" uuid="2a3257b7-d4ea-4b5f-a0be-e211712a46c2"/>
+				<textFieldExpression><![CDATA[$F{COLUMN_3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="480" y="0" width="75" height="20" uuid="d1a1efd7-e87b-49b2-9e39-d3632f2b4c1d"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$P{luna}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="456" y="104" width="100" height="20" uuid="f9269d55-1b81-425b-8fc0-f442451735b2"/>
+				<textFieldExpression><![CDATA[$F{COLUMN_6}+$F{COLUMN_7}+$F{COLUMN_8}+$F{COLUMN_11}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="196" y="24" width="62" height="20" uuid="5a13b7c4-cd5d-442f-968a-3eb27ca63b25"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Zile lucrate]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="258" y="24" width="100" height="20" uuid="2ffb1be4-2940-4970-b76d-891f038f6cc8"/>
+				<textFieldExpression><![CDATA[$F{COLUMN_5}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="26" splitType="Stretch">
+			<textField>
+				<reportElement x="428" y="3" width="80" height="20" uuid="73c95128-2a61-40d9-947a-276477aecc07"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Pagina "+$V{PAGE_NUMBER}+" din"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="508" y="3" width="40" height="20" uuid="785e1084-3ad6-474e-bfd2-3c5dfe43a19a"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="25" splitType="Stretch"/>
+	</summary>
+</jasperReport>
