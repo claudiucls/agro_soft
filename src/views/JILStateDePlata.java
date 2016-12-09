@@ -5,6 +5,7 @@
  */
 package views;
 
+import dbUtil.Calcul;
 import dbUtil.DBConnect;
 import java.awt.Dimension;
 import java.awt.HeadlessException;
@@ -62,15 +63,17 @@ public class JILStateDePlata extends javax.swing.JInternalFrame {
     private DBQueries db;
     private LocalDate today = LocalDate.now();
     private LocalDate date1 = LocalDate.now();
-    private double retineri;
+    private List<Angajat> angajati;
 
     public JILStateDePlata() {
 
         initComponents();
         db = new DBQueries();
+        angajati= db.findAngajati("", true);
         clean();
         setLocation(setCenterPoint());
         refreshtable(today);
+        
 
     }
 
@@ -79,7 +82,7 @@ public class JILStateDePlata extends javax.swing.JInternalFrame {
         Point p = new Point(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
         return p;
     }
-    
+   
 
     public void clean() {
         jComboBox1.setSelectedIndex(today.getMonthValue() - 1);
@@ -99,7 +102,7 @@ public class JILStateDePlata extends javax.swing.JInternalFrame {
      */
     public void refreshtable(LocalDate date) {
         date1 = date;
-        List<Angajat> angajati = db.findAngajati("", true);
+       
         DefaultTableModel model = new DefaultTableModel() {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -128,6 +131,7 @@ public class JILStateDePlata extends javax.swing.JInternalFrame {
         model.setColumnIdentifiers(header);
         Object[] row = new Object[15];
         Sarbatori s = new Sarbatori();
+        Calcul calcul = new Calcul();
         for (int i = 0; i < angajati.size(); i++) {
             int zileL = Sarbatori.zileLucratoareInLuna(date) - s.zileLucratoare(angajati.get(i), date);
             double salariuB = angajati.get(i).getSalariu();
@@ -151,8 +155,8 @@ public class JILStateDePlata extends javax.swing.JInternalFrame {
             row[10] = Math.round(calculDI(angajati.get(i)));
             row[11] = impozit;
             row[12] = Math.round(zileL * Double.parseDouble(jTextField2.getText()));
-            row[13] = retineri;
-            row[14] = salariuB - (cas + cass + cfs + impozit+retineri);
+            row[13] = calcul.valoareRetineri(angajati.get(i), date);
+            row[14] = salariuB - (cas + cass + cfs + impozit+calcul.valoareRetineri(angajati.get(i), date));
             model.addRow(row);
         }
 
@@ -173,8 +177,6 @@ public class JILStateDePlata extends javax.swing.JInternalFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
         jTextField1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jRetineriTxt = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jTextField2 = new javax.swing.JTextField();
@@ -220,39 +222,22 @@ public class JILStateDePlata extends javax.swing.JInternalFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setText("Anul");
 
-        jLabel4.setText("Retineri");
-
-        jRetineriTxt.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRetineriTxt.setText("0.0");
-        jRetineriTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRetineriTxtActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(23, 23, 23)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(24, 24, 24)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jRetineriTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(23, 23, 23)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(24, 24, 24)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -266,11 +251,7 @@ public class JILStateDePlata extends javax.swing.JInternalFrame {
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jRetineriTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28))
+                .addGap(67, 67, 67))
         );
 
         jPanel3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -362,7 +343,6 @@ public class JILStateDePlata extends javax.swing.JInternalFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         int month = jComboBox1.getSelectedIndex() + 1;
         int year = Integer.parseInt(jTextField1.getText());
-        retineri = Double.parseDouble(jRetineriTxt.getText());
         refreshtable(LocalDate.of(year, month, 1));
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -471,10 +451,6 @@ public class JILStateDePlata extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_StateDePlataBtnActionPerformed
 
-    private void jRetineriTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRetineriTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRetineriTxtActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton StateDePlataBtn;
@@ -484,10 +460,8 @@ public class JILStateDePlata extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField jRetineriTxt;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;

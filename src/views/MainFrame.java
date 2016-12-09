@@ -39,6 +39,7 @@ public class MainFrame extends javax.swing.JFrame {
     JIListareFacturi jilf;
     JIModificaNir jimn;
     JIStergere jis;
+    JIAddRetineri jiar;
     DBQueries db;
 
     public MainFrame() {
@@ -85,6 +86,7 @@ public class MainFrame extends javax.swing.JFrame {
         jSeparator3 = new javax.swing.JPopupMenu.Separator();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
+        jMenuItem22 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem14 = new javax.swing.JMenuItem();
         jMenuItem15 = new javax.swing.JMenuItem();
@@ -272,6 +274,14 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         jMenu2.add(jMenuItem10);
+
+        jMenuItem22.setText("Adauga Retineri");
+        jMenuItem22.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem22ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem22);
 
         jMenuBar1.add(jMenu2);
 
@@ -525,6 +535,16 @@ public class MainFrame extends javax.swing.JFrame {
         jis.setVisible(true);
     }//GEN-LAST:event_jMenuItem21ActionPerformed
 
+    private void jMenuItem22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem22ActionPerformed
+        if (jiar != null) {
+            jiar.dispose();
+            jDesktopPane1.remove(jiar);
+        }
+        jiar = new JIAddRetineri();
+        jDesktopPane1.add(jiar);
+        jiar.setVisible(true);
+    }//GEN-LAST:event_jMenuItem22ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -581,6 +601,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem20;
     private javax.swing.JMenuItem jMenuItem21;
+    private javax.swing.JMenuItem jMenuItem22;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;

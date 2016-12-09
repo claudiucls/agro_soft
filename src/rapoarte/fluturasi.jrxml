@@ -21,6 +21,7 @@
 	<field name="COLUMN_11" class="java.lang.Double"/>
 	<field name="COLUMN_12" class="java.lang.Double"/>
 	<field name="COLUMN_13" class="java.lang.Double"/>
+	<field name="COLUMN_14" class="java.lang.Double"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -52,18 +53,18 @@
 				<text><![CDATA[Fondul de Somaj (CFS) 0.5%=]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="322" y="64" width="134" height="20" uuid="60b4cd4c-68cb-4b1d-abb8-4cdac8ec261e"/>
-				<textElement textAlignment="Right"/>
+				<reportElement x="322" y="44" width="134" height="20" uuid="60b4cd4c-68cb-4b1d-abb8-4cdac8ec261e"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
 				<text><![CDATA[Deducere personala (DP) =]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="322" y="84" width="134" height="20" uuid="cc2aa487-da00-4c00-b1c6-413638951da8"/>
-				<textElement textAlignment="Right"/>
+				<reportElement x="322" y="64" width="134" height="20" uuid="cc2aa487-da00-4c00-b1c6-413638951da8"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
 				<text><![CDATA[Impozit pe Venit (IV) 16% =]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="322" y="104" width="134" height="20" uuid="d2436974-7976-41f0-9a9d-737d3cc8590d"/>
-				<textElement textAlignment="Right"/>
+				<reportElement x="322" y="84" width="134" height="20" uuid="d2436974-7976-41f0-9a9d-737d3cc8590d"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
 				<text><![CDATA[Total Taxe =]]></text>
 			</staticText>
 			<staticText>
@@ -74,10 +75,10 @@
 				<text><![CDATA[Salariu Net=]]></text>
 			</staticText>
 			<line>
-				<reportElement x="6" y="149" width="544" height="1" uuid="5a00879f-33ce-45f4-b94c-303268419acf"/>
+				<reportElement x="6" y="153" width="544" height="1" uuid="5a00879f-33ce-45f4-b94c-303268419acf"/>
 			</line>
 			<staticText>
-				<reportElement x="356" y="124" width="100" height="20" uuid="f1c76108-5625-4a16-a694-16ecaffc0a5d"/>
+				<reportElement x="356" y="104" width="100" height="20" uuid="f1c76108-5625-4a16-a694-16ecaffc0a5d"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle"/>
 				<text><![CDATA[Val. Tickete masa =]]></text>
 			</staticText>
@@ -116,15 +117,17 @@
 				<textFieldExpression><![CDATA[$F{COLUMN_8}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="456" y="64" width="99" height="20" uuid="9d47e777-3299-4d2e-b26d-3dec81326b61"/>
+				<reportElement x="456" y="44" width="99" height="20" uuid="9d47e777-3299-4d2e-b26d-3dec81326b61"/>
+				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{COLUMN_10}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="456" y="84" width="100" height="20" uuid="77417733-8b42-4c63-8268-3282922024e6"/>
+				<reportElement x="456" y="64" width="100" height="20" uuid="77417733-8b42-4c63-8268-3282922024e6"/>
+				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{COLUMN_11}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="456" y="124" width="100" height="20" uuid="bd62f425-13c7-4905-a2ed-d279c90a3916"/>
+				<reportElement x="456" y="104" width="100" height="20" uuid="bd62f425-13c7-4905-a2ed-d279c90a3916"/>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{COLUMN_12}]]></textFieldExpression>
 			</textField>
@@ -133,7 +136,7 @@
 				<textElement verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{COLUMN_13}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{COLUMN_14}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="115" y="4" width="123" height="20" uuid="8eb3e6c3-e277-4498-934a-f48a14607bc9"/>
@@ -154,7 +157,8 @@
 				<textFieldExpression><![CDATA[$P{luna}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="456" y="104" width="100" height="20" uuid="f9269d55-1b81-425b-8fc0-f442451735b2"/>
+				<reportElement x="456" y="84" width="100" height="20" uuid="f9269d55-1b81-425b-8fc0-f442451735b2"/>
+				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{COLUMN_6}+$F{COLUMN_7}+$F{COLUMN_8}+$F{COLUMN_11}]]></textFieldExpression>
 			</textField>
 			<staticText>
@@ -164,8 +168,19 @@
 			</staticText>
 			<textField>
 				<reportElement x="258" y="24" width="100" height="20" uuid="2ffb1be4-2940-4970-b76d-891f038f6cc8"/>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{COLUMN_5}]]></textFieldExpression>
 			</textField>
+			<textField>
+				<reportElement x="456" y="124" width="100" height="20" uuid="3d040367-213d-4cd1-8db2-3e2cf63798f1"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{COLUMN_13}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="356" y="124" width="100" height="20" uuid="28b258bb-6aa1-44aa-951e-28d26a343f33"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<text><![CDATA[Val. Retineri =]]></text>
+			</staticText>
 		</band>
 	</detail>
 	<pageFooter>

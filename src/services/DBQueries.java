@@ -32,6 +32,7 @@ import models.Nir;
 import models.Produs;
 import models.ProdusStoc;
 import models.Registru;
+import models.Retineri;
 
 /**
  *
@@ -1153,7 +1154,54 @@ public class DBQueries {
         }
         return false;
     }
+    
+    public boolean addRetineri(Retineri e) {
+        try {
+            conn = DBConnect.getConnection();
+            pstat = conn.prepareStatement("insert into retineri(descriere,valoare,data,angajat) values (?,?,?,?)");
+            pstat.setString(1, e.getDescriere());
+            pstat.setDouble(2, e.getValoare());
+            pstat.setDate(3, Date.valueOf(e.getData()));
+            pstat.setInt(4, e.getAngajat());
+            pstat.executeUpdate();
+            return true;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+                pstat.close();
+                conn.close();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+        return false;
+    }
 
+    public boolean updateRetineri(Retineri e) {
+        try {
+            conn = DBConnect.getConnection();
+            pstat = conn.prepareStatement("update retineri set descriere =?,valoare=?,data=?,angajat=? where id =?");
+            pstat.setString(1, e.getDescriere());
+            pstat.setDouble(2, e.getValoare());
+            pstat.setDate(3, Date.valueOf(e.getData()));
+            pstat.setInt(4, e.getAngajat());
+            pstat.setInt(5, e.getId());
+            pstat.executeUpdate();
+            return true;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+                pstat.close();
+                conn.close();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+        return false;
+    }
+    
     public boolean updateEvent(Event e) {
         try {
             conn = DBConnect.getConnection();
@@ -1204,8 +1252,34 @@ public class DBQueries {
         }
         return null;
     }
-
-    public Event getEventById(int id) {
+    
+    public List<Retineri> findAllRetineri() {
+        try {
+            List<Retineri> rets = new ArrayList<>();
+            conn = DBConnect.getConnection();
+            pstat = conn.prepareStatement("select * from retineri");
+            rs = pstat.executeQuery();
+            Retineri e = null;
+            while (rs.next()) {
+                e = new Retineri(rs.getInt(1), rs.getString(2), rs.getDouble(3), rs.getDate(4).toLocalDate(), rs.getInt(5));
+                rets.add(e);
+            }
+            return rets;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+                rs.close();
+                pstat.close();
+                conn.close();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+        return null;
+    }
+    
+     public Event getEventById(int id) {
         try {
             conn = DBConnect.getConnection();
             pstat = conn.prepareStatement("select * from event where id =?");
@@ -1230,6 +1304,31 @@ public class DBQueries {
         return null;
     }
 
+    public Retineri getRetineriById(int id) {
+        try {
+            conn = DBConnect.getConnection();
+            pstat = conn.prepareStatement("select * from retineri where id =?");
+            pstat.setInt(1, id);
+            rs = pstat.executeQuery();
+            Retineri e = null;
+            while (rs.next()) {
+                e = new Retineri(rs.getInt(1), rs.getString(2), rs.getDouble(3), rs.getDate(4).toLocalDate(), rs.getInt(6));
+            }
+            return e;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+                rs.close();
+                pstat.close();
+                conn.close();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+        return null;
+    }
+    
     public List<Event> getEventByIdAngajat(int id) {
         // Event e = null;
         List<Event> events = new ArrayList<>();
@@ -1258,6 +1357,54 @@ public class DBQueries {
         return null;
     }
 
+    public List<Retineri> getRetineriByIdAngajat(int id) {
+        // Event e = null;
+        List<Retineri> rets = new ArrayList<>();
+        try {
+            conn = DBConnect.getConnection();
+            pstat = conn.prepareStatement("select * from retineri where angajat =? order by data");
+            pstat.setInt(1, id);
+            rs = pstat.executeQuery();
+            Retineri e = null;
+            while (rs.next()) {
+                e = new Retineri(rs.getInt(1), rs.getString(2), rs.getDouble(3), rs.getDate(4).toLocalDate(), rs.getInt(5));
+                rets.add(e);
+            }
+            return rets;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+                rs.close();
+                pstat.close();
+                conn.close();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+        return null;
+    }
+    
+     public boolean deleteRetineri(int id) {
+        try {
+            conn = DBConnect.getConnection();
+            pstat = conn.prepareStatement("delete from retineri where id=?");
+            pstat.setInt(1, id);
+            pstat.executeUpdate();
+            return true;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+                pstat.close();
+                conn.close();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+        return false;
+    }
+    
     public boolean deleteEvent(int id) {
         try {
             conn = DBConnect.getConnection();
