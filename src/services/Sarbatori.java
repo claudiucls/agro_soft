@@ -33,7 +33,24 @@ public class Sarbatori {
             LocalDate.of(2016, Month.NOVEMBER, 30),
             LocalDate.of(2016, Month.DECEMBER, 1),
             LocalDate.of(2016, Month.DECEMBER, 25),
-            LocalDate.of(2016, Month.DECEMBER, 26)
+            LocalDate.of(2016, Month.DECEMBER, 26),
+            //2026
+            LocalDate.of(2026, Month.JANUARY, 1),
+            LocalDate.of(2026, Month.JANUARY, 2),
+            LocalDate.of(2026, Month.JANUARY, 6),
+            LocalDate.of(2026, Month.JANUARY, 7),
+            LocalDate.of(2026, Month.JANUARY, 24),
+            LocalDate.of(2026, Month.APRIL, 10),
+            LocalDate.of(2026, Month.APRIL, 11),
+            LocalDate.of(2026, Month.APRIL, 12),
+            LocalDate.of(2026, Month.APRIL, 13),
+            LocalDate.of(2026, Month.MAY, 1),
+            LocalDate.of(2026, Month.JUNE, 1),
+            LocalDate.of(2026, Month.AUGUST, 15),
+            LocalDate.of(2026, Month.NOVEMBER, 30),
+            LocalDate.of(2026, Month.DECEMBER, 1),
+            LocalDate.of(2026, Month.DECEMBER, 25),
+            LocalDate.of(2026, Month.DECEMBER, 26)
     );
 
     public static boolean esteSarbatoare(LocalDate d) {

@@ -10,7 +10,6 @@ import java.time.LocalDate;
 
 import java.util.List;
 import models.Angajat;
-;
 import models.Event;
 
 import services.DBQueries;
