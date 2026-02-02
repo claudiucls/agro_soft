@@ -195,6 +195,11 @@ public class JIAddProdus1 extends javax.swing.JInternalFrame {
 
     tvaCombo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
     tvaCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "20%", "9%", "5%", "0%" }));
+    tvaCombo.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            tvaComboActionPerformed(evt);
+        }
+    });
 
     jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
     jLabel2.setText("Denumire");
@@ -445,6 +450,10 @@ public class JIAddProdus1 extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void tvaComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tvaComboActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tvaComboActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField cantiatatetxt;
@@ -473,10 +482,10 @@ public class JIAddProdus1 extends javax.swing.JInternalFrame {
         this.produs = p;
         denumireTxt.setText(p.getDenumire());
         String tva = p.getTva();
-        if (tva.equalsIgnoreCase("20%")) {
+        if (tva.equalsIgnoreCase("21%")) {
             tvaCombo.setSelectedIndex(0);
         }
-        if (tva.equalsIgnoreCase("9%")) {
+        if (tva.equalsIgnoreCase("11%")) {
             tvaCombo.setSelectedIndex(1);
         }
         if (tva.equalsIgnoreCase("5%")) {
