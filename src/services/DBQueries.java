@@ -894,18 +894,8 @@ public class DBQueries {
         }
         return null;
     }
-
-    public List<Produs> getProdusePerGestiune(int gestiune, String cauta) {
-        try {
-            List<Produs> produse = new ArrayList<>();
-            conn = DBConnect.getConnection();
-            if (gestiune == 0) {
-               /* pstat = conn.prepareStatement("select denumire,um,tva,pret_unitar,stoc,valoare "
-                        + "from (select denumire,um,tva,pret_unitar,round(sum(cantitate_intrare-cantitate_iesire-cantitate_facturat),2) as stoc,"
-                        + "round(pret_unitar*sum(cantitate_intrare-cantitate_iesire-cantitate_facturat),2) as valoare,nir.gestiune from produs left join nir on produs.intrare=nir.id group by denumire, pret_unitar) as stoc_produse "
-                        + " where denumire like ? and stoc>0 order by stoc desc"
-                );
-                */
+    
+      /* IF GESIUNE IS 0
                pstat = conn.prepareStatement("select denumire,um,tva,pret_unitar,stoc,valoare "
     + "from (select denumire, um, tva, pret_unitar, "
     + "round(sum(cantitate_intrare - cantitate_iesire - cantitate_facturat), 2) as stoc, "
@@ -914,16 +904,9 @@ public class DBQueries {
     + "from produs "
     + "left join nir on produs.intrare = nir.id "
     + "group by denumire, um, tva, pret_unitar, nir.gestiune) as stoc_produse " 
-    + "where denumire like ? and stoc > 0 order by stoc desc");
-                pstat.setString(1, "%" + cauta + "%");
-            } else {
-                /*pstat = conn.prepareStatement("select denumire,um,tva,pret_unitar,stoc,valoare "
-                        + "from (select denumire,um,tva,pret_unitar,round(sum(cantitate_intrare-cantitate_iesire-cantitate_facturat),2) as stoc,"
-                        + "round(pret_unitar*sum(cantitate_intrare-cantitate_iesire-cantitate_facturat),2) as valoare,nir.gestiune from produs right join nir on produs.intrare=nir.id group by denumire, pret_unitar) as stoc_produse"
-                        + " where gestiune =?  and denumire like ? order by stoc desc");
-                pstat.setInt(1, gestiune);
-                pstat.setString(2, "%" + cauta + "%");
-                   */
+    + "where denumire like ? and stoc > 0 order by stoc desc");*/
+    
+     /* IF THERE IS GESTIUNE
                 pstat = conn.prepareStatement("select denumire,um,tva,pret_unitar,stoc,valoare "
     + "from (select denumire, um, tva, pret_unitar, "
     + "round(sum(cantitate_intrare - cantitate_iesire - cantitate_facturat), 2) as stoc, "
@@ -933,6 +916,29 @@ public class DBQueries {
     + "right join nir on produs.intrare = nir.id "
     + "group by denumire, um, tva, pret_unitar, nir.gestiune) as stoc_produse " // Added um, tva, gestiune here
     + "where gestiune = ? and denumire like ? order by stoc desc");
+            
+            */
+    
+    public List<Produs> getProdusePerGestiune(int gestiune, String cauta) {
+        try {
+            List<Produs> produse = new ArrayList<>();
+            conn = DBConnect.getConnection();
+            if (gestiune == 0) {
+               pstat = conn.prepareStatement("select denumire,um,tva,pret_unitar,stoc,valoare "
+                        + "from (select denumire,um,tva,pret_unitar,round(sum(cantitate_intrare-cantitate_iesire-cantitate_facturat),2) as stoc,"
+                        + "round(pret_unitar*sum(cantitate_intrare-cantitate_iesire-cantitate_facturat),2) as valoare,nir.gestiune from produs left join nir on produs.intrare=nir.id group by denumire, pret_unitar) as stoc_produse "
+                        + " where denumire like ? and stoc>0 order by stoc desc"
+                );
+                               
+                pstat.setString(1, "%" + cauta + "%");
+            } else {
+                pstat = conn.prepareStatement("select denumire,um,tva,pret_unitar,stoc,valoare "
+                        + "from (select denumire,um,tva,pret_unitar,round(sum(cantitate_intrare-cantitate_iesire-cantitate_facturat),2) as stoc,"
+                        + "round(pret_unitar*sum(cantitate_intrare-cantitate_iesire-cantitate_facturat),2) as valoare,nir.gestiune from produs left join nir on produs.intrare=nir.id group by denumire, pret_unitar) as stoc_produse"
+                        + " where gestiune =?  and denumire like ? order by stoc desc");
+                pstat.setInt(1, gestiune);
+                pstat.setString(2, "%" + cauta + "%");
+                              
             }
             rs = pstat.executeQuery();
             Produs p = null;

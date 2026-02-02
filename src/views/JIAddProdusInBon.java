@@ -71,7 +71,7 @@ public class JIAddProdusInBon extends javax.swing.JInternalFrame {
     }
 
     public void refreshTable(int gestiune, String cauta) {
-        List<Produs> produse = dq.getProdusePerGestiune(0,cauta);
+        List<Produs> produse = dq.getProdusePerGestiune(gestiune,cauta);
         try {
             List<Produs> listp = mf.jibc.listap;
             listp.stream().forEach((p) -> {

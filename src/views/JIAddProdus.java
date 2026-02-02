@@ -194,7 +194,7 @@ public class JIAddProdus extends javax.swing.JInternalFrame {
     jLabel5.setText("TVA");
 
     tvaCombo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-    tvaCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "20%", "9%", "5%", "0%" }));
+    tvaCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "21%", "11%", "5%", "0%" }));
     tvaCombo.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
             tvaComboActionPerformed(evt);
@@ -399,10 +399,10 @@ public class JIAddProdus extends javax.swing.JInternalFrame {
         umTxt.setText(p.getUm());
         //       jTextField6.setText(p.getTva());
         String d = p.getTva();
-        if (d.equalsIgnoreCase("20%")) {
+        if (d.equalsIgnoreCase("21%")) {
             tvaCombo.setSelectedIndex(0);
         }
-        if (d.equalsIgnoreCase("9%")) {
+        if (d.equalsIgnoreCase("11%")) {
             tvaCombo.setSelectedIndex(1);
         }
         if (d.equalsIgnoreCase("5%")) {
@@ -423,17 +423,17 @@ public class JIAddProdus extends javax.swing.JInternalFrame {
         float f = 0.0f;
         float pTva = 0.0f;
         switch (tva) {
-            case "20%":
-                f = 0.20f;
+            case "21%":
+                f = 1.21f;
                 break;
-            case "9%":
-                f = 0.09f;
+            case "11%":
+                f = 1.11f;
                 break;
             case "5%":
-                f = 0.05f;
+                f = 1.05f;
                 break;
             case "0%":
-                f = 0f;
+                f = 1f;
                 break;
         }
         if (!pretTVA.isEmpty()) {
@@ -446,7 +446,7 @@ public class JIAddProdus extends javax.swing.JInternalFrame {
             } else {
                 JOptionPane.showMessageDialog(null, "Introduceti un numar valid folosing . ca despartitor de decimale");
             }
-            pretUnitarTxt.setText(String.valueOf(df.format(pTva - pTva * f)));
+            pretUnitarTxt.setText(String.valueOf(df.format(pTva / f)));
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
